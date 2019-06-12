@@ -12,6 +12,9 @@ node[:deploy].each do |application, deploy|
 
   environment_variables = deploy[:custom_env].to_h.merge(deploy[:environment_variables].to_h)
 
+  Chef::Log.info(">>>>>>> var environment_variables")
+  Chef::Log.info(environment_variables)
+
   custom_env_template do
     application application
     deploy deploy
