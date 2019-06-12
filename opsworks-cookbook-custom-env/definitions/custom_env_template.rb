@@ -9,6 +9,10 @@ define :custom_env_template do
     owner params[:deploy][:user]
     group params[:deploy][:group]
     mode "0660"
+    Chef::Log.info("custom_env_template env ")
+    Chef::Log.info(params[:env])
+
+    environment params[:env]
     variables :env => params[:env]
 
     only_if do
