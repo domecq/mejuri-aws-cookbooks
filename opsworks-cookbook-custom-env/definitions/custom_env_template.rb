@@ -9,12 +9,9 @@ define :custom_env_template do
     owner params[:deploy][:user]
     group params[:deploy][:group]
     mode "0660"
-    variables env
-    # Chef::Log.info(":env => params[:env]")
-    # Chef::Log.info(:env => params[:env])
-
-    Chef::Log.info("File.exists?")
-    Chef::Log.info(File.exists?("#{params[:deploy][:deploy_to]}/shared/config"))
+    variables :env => params[:env]
+    Chef::Log.info(">>>>> params")
+    Chef::Log.info(params)
 
     only_if do
       File.exists?("#{params[:deploy][:deploy_to]}/shared/config")
