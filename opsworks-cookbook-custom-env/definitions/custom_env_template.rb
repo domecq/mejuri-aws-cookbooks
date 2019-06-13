@@ -5,6 +5,8 @@
 
 define :custom_env_template do
   template "#{params[:deploy][:deploy_to]}/shared/config/application.yml" do
+    Chef::Log.info(">>>>> template: #{params[:deploy][:deploy_to]}/shared/config/application.yml")
+
     source "application.yml.erb"
     owner params[:deploy][:user]
     group params[:deploy][:group]
