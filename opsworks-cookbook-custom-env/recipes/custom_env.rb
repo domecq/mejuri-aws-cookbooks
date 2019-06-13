@@ -23,6 +23,6 @@ node[:deploy].each do |application, deploy|
   end
 
   Chef::Log.info(">>>>>>> File.exists?")
-  Chef::Log.info(File.exists?("/srv/www/mejuri_web/shared/config/application.yml")
+  Chef::Log.info(File.exists?("/srv/www/mejuri_web/shared/config/application.yml"))
   Chef::Log.info(File.read("/srv/www/mejuri_web/shared/config/application.yml"))
 end
