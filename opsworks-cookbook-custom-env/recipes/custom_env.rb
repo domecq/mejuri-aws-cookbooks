@@ -1,10 +1,11 @@
 # Recipe used for a setup and deploy events
 Chef::Log.info("Create config/application.yml file...")
 
+Chef::Log.info(">>>>>>> node[:deploy]")
+Chef::Log.info(node[:deploy])
+
 node[:deploy].each do |application, deploy|
   Chef::Log.info("Debugg env variables")
-  Chef::Log.info(">>>>>>> custom_env")
-  Chef::Log.info(deploy[:custom_env].to_h)
   Chef::Log.info(">>>>>>> environment_variables")
   Chef::Log.info(deploy[:environment_variables].to_h)
   Chef::Log.info(">>>>>>> environment")
@@ -20,4 +21,7 @@ node[:deploy].each do |application, deploy|
     deploy deploy
     env environment_variables
   end
+
+  Chef::Log.info(">>>>>>> File.exists?")
+  Chef::Log.info(File.exists?("#{params[:deploy][:deploy_to]}/shared/config/application.yml"))
 end
